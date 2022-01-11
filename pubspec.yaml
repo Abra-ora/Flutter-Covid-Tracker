@@ -24,6 +24,16 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   flutter_svg: ^0.19.1
+  provider: ^6.0.2
+  http: ^0.13.4
+  auto_size_text: ^3.0.0
+  smooth_page_indicator: ^1.0.0+2
+  # webview_flutter: ^3.0.0
+  cached_network_image: ^3.2.0
+  carousel_slider: ^4.0.0
+  # intl: ^0.17.0
+  # flushbar: ^1.10.4
+  # shared_preferences: ^2.0.12
 
 dev_dependencies:
   flutter_test:
@@ -43,7 +53,16 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-  #  - images/a_dot_ham.jpeg
+    - assets/symptoms/
+    - assets/
+    - assets/prevention/
+    - assets/myths/
+    - assets/updates/
+    - assets/stats/
+    - assets/flags/
+    - assets/launcher/
+  #  - images/a_ - family: Montserrat
+       
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see
@@ -53,17 +72,15 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+  fonts:
+     - family: Montserrat
+       fonts:
+         - asset: fonts/Montserrat-Bold.ttf
+           weight: 700
+         - asset: fonts/Montserrat-SemiBold.ttf
+           weight: 600
+         - asset: fonts/Montserrat-Regular.ttf
+           weight: 400
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
