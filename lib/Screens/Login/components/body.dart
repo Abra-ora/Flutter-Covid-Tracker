@@ -1,5 +1,6 @@
 // ignore_for_file: missing_return
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Login/components/background.dart';
 import 'package:flutter_auth/Screens/Signup/signup_screen.dart';
@@ -15,12 +16,10 @@ import 'package:provider/provider.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 class Body extends StatelessWidget {
-  // const Body({
-  //   Key key,
-  // }) : super(key: key);
-
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  String _email = "";
+  String _password = "";
+  String error = "";
+  final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -53,42 +52,40 @@ class Body extends StatelessWidget {
             SizedBox(height: size.height * 0.03),
             RoundedInputField(
               icon: IconData(0xe22a, fontFamily: 'MaterialIcons'),
-              hintText: "Your Email",
-              validatorMessage: "Please enter your e-mail",
-              controller: _emailController,
-              onChanged: (value) {},
+              hintText: "E-mail",
+              validatorMessage: "Please enter a valide e-mail",
+              onChanged: (value) {
+                _email = value;
+              },
             ),
             RoundedPasswordField(
               validatorMessage: "Please enter a valide password",
-              controller: _passwordController,
-              onChanged: (value) {},
+              onChanged: (value) {
+                _password = value;
+              },
             ),
             RoundedButton(
               text: "LOGIN",
-              press: () {
-                Map login = {
-                  'email': _emailController.text,
-                  'password': _passwordController.text
-                };
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return HomeScreen();
-                    },
-                  ),
-                );
-                // Consumer<Auth>(
-                //   builder: (context, auth, child) {
-                //     if (auth.authentidied) {
-
-                //     } else {
-                //       return null;
-                //     }
-                //   },
-                // );
+              press: () async {
+                if (_formKey.currentState.validate()) {
+                  dynamic res = await _auth.Login(_email, _password);
+                  if (res == null) {
+                    error = "Please check your informations";
+                  } 
+                  else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return HomeScreen();
+                        },
+                      ),
+                    );
+                  }
+                }
               },
             ),
+            Text(error, style: TextStyle(color: Colors.red, fontSize: 14.0)),
             SizedBox(height: size.height * 0.03),
             AlreadyHaveAnAccountCheck(
               press: () {

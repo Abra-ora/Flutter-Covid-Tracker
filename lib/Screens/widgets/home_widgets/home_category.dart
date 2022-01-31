@@ -9,7 +9,7 @@ import '../../../Screens/pages/myths_page.dart';
 import '../../../Screens/pages/virus_details_page.dart';
 
 import '../../../Screens/pages/updates_page.dart';
-// import '../../../Screens/pages/stats_dashboard_screens/world_stat.dart';
+import '../../../Screens/stats_dashboard_screens/world_stat.dart';
 
 // ignore: must_be_immutable
 class CategoryTab extends StatelessWidget {
@@ -51,9 +51,9 @@ class CategoryTab extends StatelessWidget {
       //             color: color,
       //             imgPath: imgPath,
       //           )));
-      // case ("Statistics"):
-      //   return () => Navigator.of(context)
-      //       .push(MaterialPageRoute(builder: (context) => WorldStatScreen()));
+      case ("Statistics"):
+        return () => Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => WorldStatScreen()));
     }
     return () {};
   }

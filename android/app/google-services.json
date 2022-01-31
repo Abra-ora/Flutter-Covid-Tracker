@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "991670576211",
+    "project_id": "flutter-covid-tracker-f2ec3",
+    "storage_bucket": "flutter-covid-tracker-f2ec3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:991670576211:android:b8bfd8e6b36fc69fd152a6",
+        "android_client_info": {
+          "package_name": "com.example.flutter_auth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "991670576211-eiqov6cf0bnpl1dj9p7un3f29b482rm0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_xGYRDlBe-ak4AHV9R1D8NuIF53C9mR8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "991670576211-eiqov6cf0bnpl1dj9p7un3f29b482rm0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

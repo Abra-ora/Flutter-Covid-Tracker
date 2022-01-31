@@ -19,7 +19,7 @@ class RoundedPasswordField extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         validator: (value) {
-          if (value == null || value.isEmpty) {
+          if (value.length < 6) {
             return validatorMessage;
           }
           return null;

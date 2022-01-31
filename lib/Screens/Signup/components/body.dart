@@ -1,9 +1,12 @@
 // ignore_for_file: unused_element
 
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Login/login_screen.dart';
 import 'package:flutter_auth/Screens/Signup/components/background.dart';
+import 'package:flutter_auth/Screens/pages/home_page.dart';
+import 'package:flutter_auth/Services/auth/auth.dart';
 // import 'package:flutter_auth/Screens/Signup/components/or_divider.dart';
 // import 'package:flutter_auth/Screens/Signup/components/social_icon.dart';
 import 'package:flutter_auth/components/already_have_an_account_acheck.dart';
@@ -13,11 +16,14 @@ import 'package:flutter_auth/components/rounded_password_field.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Body extends StatelessWidget {
-  TextEditingController _usernameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _numberController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  String _email = '';
+  String _password = '';
+  String _username = '';
+  bool infected = false;
+  String error = '';
   final _formKey = GlobalKey<FormState>();
+  final AuthService _auth = new AuthService();
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -51,41 +57,58 @@ class Body extends StatelessWidget {
                 ),
                 RoundedInputField(
                   hintText: "Username",
-                  controller: _usernameController,
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    _username = value.toString().trim();
+                  },
                   validatorMessage: "Please enter the username",
                 ),
                 RoundedInputField(
                   icon: IconData(0xe22a, fontFamily: 'MaterialIcons'),
                   hintText: "Your Email",
-                  controller: _emailController,
                   validatorMessage: "Please enter your e-mail",
-                  onChanged: (value) {},
-                ),
-                RoundedInputField(
-                  icon: IconData(0xe4a2, fontFamily: 'MaterialIcons'),
-                  hintText: "Phone Number",
-                  controller: _numberController,
-                  validatorMessage: "Please enter your phone number",
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    _email = value.toString().trim();
+                  },
                 ),
                 RoundedPasswordField(
-                  controller: _passwordController,
-                  validatorMessage: "Please enter a valide password",
-                  onChanged: (value) {},
+                  validatorMessage:
+                      "Please enter a valide password (more than 6 character).",
+                  onChanged: (value) {
+                    _password = value.toString().trim();
+                  },
                 ),
                 RoundedButton(
                   text: "SIGNUP",
-                  press: () {
-                    Map signup = {
-                      'username': _usernameController.text,
-                      'email': _emailController.text,
-                      'phoneNumber': _numberController.text,
-                      'password': _passwordController.text
-                    };
+                  press: () async {
+                    print(_email);
+                    print(_password);
+
+                    if (_formKey.currentState.validate()) {
+                      dynamic res = await _auth.Register(_username,_email, _password);
+
+                      if (res != null) {
+                        // _firestore.collection('users').doc(_email).set({
+                        //   'name': _username,
+                        //   'infected': false
+                        // });
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return HomeScreen();
+                            },
+                          ),
+                        );
+                      } else {
+                        error = "Please check your informations";
+                      }
+                    }
                   },
                 ),
-                SizedBox(height: size.height * 0.03),
+                // SizedBox(height: size.height * 0.03),
+                Text(error,
+                    style: TextStyle(color: Colors.red, fontSize: 14.0)),
+                // SizedBox(height: size.height * 0.03),
                 AlreadyHaveAnAccountCheck(
                   login: false,
                   press: () {
@@ -99,24 +122,6 @@ class Body extends StatelessWidget {
                     );
                   },
                 ),
-                // OrDivider(),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   children: <Widget>[
-                //     SocalIcon(
-                //       iconSrc: "assets/icons/facebook.svg",
-                //       press: () {},
-                //     ),
-                //     SocalIcon(
-                //       iconSrc: "assets/icons/twitter.svg",
-                //       press: () {},
-                //     ),
-                //     SocalIcon(
-                //       iconSrc: "assets/icons/google-plus.svg",
-                //       press: () {},
-                //     ),
-                //   ],
-                // )
               ],
             ),
           ),
