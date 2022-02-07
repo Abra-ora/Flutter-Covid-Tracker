@@ -20,13 +20,20 @@ class DBService {
     return _usersCollection.snapshotsInSync();
   }
 
-  // Current user
-  Future<DocumentReference> CurrUser() async {
+  // // Current user
+  // static Future<DocumentReference> CurrUser() async {
+  //   final AuthService auth = new AuthService();
+  //   User user = await auth.auth.currentUser;
+  //   // final curruser =
+  //   //     _usersCollection.collection('users').doc(user.uid).get().then(
+  //   //         String name =
+  //   //     );
+  // }
+
+  static Future<User> CurrUser() async {
     final AuthService auth = new AuthService();
+
     User user = await auth.auth.currentUser;
-    // final curruser =
-    //     _usersCollection.collection('users').doc(user.uid).get().then(
-    //         String name = 
-    //     );
+    
   }
 }

@@ -10,6 +10,15 @@ class HomeCategories extends StatelessWidget {
 
   static List<Map<String, dynamic>> categoryData = [
     {
+      "imgBottom": -4.0,
+      "imgLeft": 0.0,
+      "imgPath": "assets/wallet.png",
+      "tabName": "Wallet",
+      "imgHeight": 140.0,
+      "tabDesc": "Chek yout tests, certicats.",
+      "color": Colors.blueAccent[700],
+    },
+    {
       "imgLeft": 5.0,
       "imgBottom": 19.0,
       "imgHeight": 122.0,
@@ -43,7 +52,7 @@ class HomeCategories extends StatelessWidget {
       "imgLeft": 20.0,
       "imgHeight": 170.0,
       "tabDesc": "Get rid of false assumptions",
-      "color": Colors.redAccent[700],
+      "color": Colors.greenAccent[700],
     },
     {
       "imgBottom": 10.0,
@@ -54,15 +63,6 @@ class HomeCategories extends StatelessWidget {
       "imgPath": "assets/corona.png",
       "color": Colors.orange[700],
     },
-    // {
-    //   "imgBottom": -4.0,
-    //   "imgLeft": 8.0,
-    //   "imgPath": "assets/updates/updates.png",
-    //   "tabName": "Updates",
-    //   "imgHeight": 146.0,
-    //   "tabDesc": "View the latest news related to the virus",
-    //   "color": Colors.greenAccent[700],
-    // },
   ];
 
   @override

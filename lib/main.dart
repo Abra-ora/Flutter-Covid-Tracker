@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_auth/Screens/Welcome/welcome_screen.dart';
+import 'package:flutter_auth/Screens/pages/home_page.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/models/app_user.dart';
 import 'package:flutter_auth/wrapper.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.white,
         ),
         home: Wrapper(),
+        // home: HomeScreen(),
       ),
     );
   }

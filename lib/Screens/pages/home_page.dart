@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_auth/Screens/widgets/home_widgets/drawer.dart';
 import 'package:flutter_auth/Services/Database/DB_service.dart';
 import 'package:flutter_auth/Services/auth/auth.dart';
 import 'package:flutter_auth/models/app_user.dart';
@@ -31,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: AutoSizeText(
           "Covid-19 Tracker",
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 22,
             fontFamily: "Montserrat",
             color: Colors.black,
             fontWeight: FontWeight.w600,
@@ -40,57 +41,16 @@ class _HomeScreenState extends State<HomeScreen> {
           stepGranularity: 2,
           maxLines: 1,
         ),
-      ),
-      drawer: Drawer(
-        child: ListView(padding: EdgeInsets.all(0.0), children: <Widget>[
-          UserAccountsDrawerHeader(
-            accountName: Text(s),
-            accountEmail: Text('aleydon@gmail.com'),
-            currentAccountPicture: CircleAvatar(
-              backgroundImage: ExactAssetImage('assets/person.png'),
+        actions: [
+            IconButton(
+              icon: const Icon(Icons.qr_code_2_rounded),
+              tooltip: 'Show Snackbar',
+              onPressed: () {   
+              },
             ),
-            otherAccountsPictures: <Widget>[
-              CircleAvatar(
-                child: Text('A'),
-                backgroundColor: Colors.white60,
-              ),
-              CircleAvatar(
-                child: Text('R'),
-              ),
-            ],
-            onDetailsPressed: () {},
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("assets/bg.jpg"), fit: BoxFit.cover)),
-          ),
-          ListTile(
-            title: Text('Profile'),
-            leading: Icon(Icons.person),
-            onLongPress: () {},
-          ),
-          Divider(),
-          ListTile(
-            title: Text('Log out'),
-            leading: Icon(Icons.logout),
-            onLongPress: () async {
-              await _auth.SingOut();
-            },
-          ),
-          Divider(),
-          ListTile(
-            title: Text('Settings'),
-            leading: Icon(Icons.settings),
-            onLongPress: () {},
-          ),
-          ListTile(
-              title: Text('Close'),
-              leading: Icon(Icons.close),
-              onTap: () {
-                Navigator.of(context).pop();
-                // Scaffold.of(context).openDrawer();
-              }),
-        ]),
+          ],
       ),
+      drawer: Home_drawer("username", "email", context),
       body: HomeCategories(),
     );
   }
