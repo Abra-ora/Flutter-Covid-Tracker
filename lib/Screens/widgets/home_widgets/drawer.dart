@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/pages/contacts_page';
+import 'package:flutter_auth/Screens/pages/contacts_page.dart';
 import 'package:flutter_auth/Screens/pages/profile_page.dart';
 
 // parameters (String username, String email)

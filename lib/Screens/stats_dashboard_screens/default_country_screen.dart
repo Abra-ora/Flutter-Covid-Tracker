@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 import '../values/default_country_data.dart';
 import '../widgets/stats_widgets/country_stat_widget.dart';
-import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class DefaultCountryScreen extends StatefulWidget {

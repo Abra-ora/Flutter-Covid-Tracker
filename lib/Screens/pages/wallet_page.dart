@@ -28,8 +28,8 @@ class _WalletPageState extends State<WalletPage> {
       {this.imgPath = "assets/covid_test.png",
       this.tabName = "Covid Test",
       this.tabDesc = "CoronaVirus Test: Negative",
-      this.imgHeight = 110.0,
-      this.imgLeft = 10.0,
+      this.imgHeight = 100.0,
+      this.imgLeft = 15.0,
       this.imgBottom = 10.0,
       this.titleGrp,
       this.descGrp});
@@ -83,7 +83,7 @@ class _WalletPageState extends State<WalletPage> {
                               style: TextStyle(
                                 color: widget.color,
                                 fontFamily: "Montserrat",
-                                fontSize: 31,
+                                fontSize: 28,
                                 fontWeight: FontWeight.w700,
                               ),
                               maxLines: 1,
@@ -116,6 +116,7 @@ class _WalletPageState extends State<WalletPage> {
               ),
             ),
             ListView.builder(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                 itemCount: 4,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),

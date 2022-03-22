@@ -1,9 +1,10 @@
+
 class AppException implements Exception {
   final _message;
   
-AppException([this._message,]);
+  AppException([this._message,]);
   
-String toString() {
+  String toString() {
     return "$_message";
   }
 }

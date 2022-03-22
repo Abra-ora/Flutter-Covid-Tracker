@@ -35,7 +35,7 @@ class _ContactsState extends State<Contacts> {
   Widget build(BuildContext context) {
         return Scaffold(
       backgroundColor: Colors.grey[100],
-      extendBodyBehindAppBar: true,
+      extendBodyBehindAppBar: false,
       appBar: AppBar(
         leading: IconButton(
             onPressed: () => Navigator.of(context).pop(),
@@ -48,7 +48,7 @@ class _ContactsState extends State<Contacts> {
           "Tracked Contacts",
           style: TextStyle(
             fontSize: 22,
-            fontFamily: "Montserrat",
+            fontFamily: "Montsecontacts_pagerrat",
             color: Colors.black,
             fontWeight: FontWeight.w600,
           ),
